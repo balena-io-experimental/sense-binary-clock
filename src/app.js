@@ -14,8 +14,8 @@ outputBinaryStrings = (hrs, mins, secs) => {
     const hX = 1
     const mX = 3
     const sX = 5
-    const pm = (twelveHrClock ? hrs > 12 : false);
-    hrs = (pm ? hrs - 12 : hrs);
+    const pm = (hrs >= 12);
+    hrs = (twelveHrClock && (hrs > 12) ? hrs - 12 : (twelveHrClock && hrs == 0 ? 12 : hrs));
     (secs == 0) && console.log("%s:%s%s",
             (!twelveHrClock && hrs < 10 ? "0" + hrs : hrs),
             (mins < 10 ? "0" + mins : mins),
