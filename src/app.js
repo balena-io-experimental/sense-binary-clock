@@ -2,6 +2,12 @@ SenseHAT = require('node-sense-hat')
 
 const matrix = SenseHAT.Leds
 
+fill8Binary = (s) => {
+	return "00000000"
+			.slice(0, 8 - s.toString(2).length)
+			.concat(s.toString(2))
+}
+
 outputBinaryStrings = (hrs, mins, secs) => {
 	const hX = 1
 	const mX = 3
@@ -11,28 +17,24 @@ outputBinaryStrings = (hrs, mins, secs) => {
 
 	// setup the work to do
 	tasks = [
-		{ x: hX, color: [255, 0, 0], timeStr: hrs },
-		{ x: mX, color: [0, 255, 0], timeStr: mins },
-		{ x: sX, color: [0, 0, 255], timeStr: secs }
+		{ x: hX, color: [255, 0, 0], timeStr: fill8Binary(hrs) },
+		{ x: mX, color: [0, 255, 0], timeStr: fill8Binary(mins) },
+		{ x: sX, color: [0, 0, 255], timeStr: fill8Binary(secs) }
 	]
 
 	for (var t of tasks) {
-		y = 7
+		y = 0
 		for (var c of t.timeStr) {
 			if (c === '1') {
-				matrix.setPixel(t.x, y, t.color)
+				matrix.setPixel(y, t.x, t.color)
 			}
-			y--
+			y++
 		}
 	}
 }
 
 setInterval(() => {
 	const d = new Date()
-	const hourStr = d.getHours().toString(2).reverse()
-	const minStr = d.getMinutes().toString(2).reverse()
-	const secStr = d.getSeconds().toString(2).reverse()
-
-	outputBinaryStrings(hourStr, minStr, secStr)
-
+	outputBinaryStrings(d.getHours(), d.getMinutes(), d.getSeconds())
 }, 500)
+
