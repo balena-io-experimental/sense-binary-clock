@@ -17,9 +17,9 @@ outputBinaryStrings = (hrs, mins, secs) => {
 
 	// setup the work to do
 	tasks = [
-		{ x: hX, color: [255, 0, 0], timeStr: fill8Binary(hrs) },
+		{ x: hX, color: [0, 0, 255], timeStr: fill8Binary(hrs) },
 		{ x: mX, color: [0, 255, 0], timeStr: fill8Binary(mins) },
-		{ x: sX, color: [0, 0, 255], timeStr: fill8Binary(secs) }
+		{ x: sX, color: [255, 0, 0], timeStr: fill8Binary(secs) }
 	]
 
 	for (var t of tasks) {

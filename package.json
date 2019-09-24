@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/resin-io-playground/sense-binary-clock.git"
+    "url": "git+https://github.com/balena-io-playground/sense-binary-clock.git"
   },
   "keywords": [
     "senseHAT"
   ],
-  "author": "Cameron Diver <cameron@resin.io>",
+  "author": "Cameron Diver <cameron@balena.io>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/resin-io-playground/sense-binary-clock/issues"
+    "url": "https://github.com/balena-io-playground/sense-binary-clock/issues"
   },
-  "homepage": "https://github.com/resin-io-playground/sense-binary-clock#readme",
+  "homepage": "https://github.com/balena-io-playground/sense-binary-clock#readme",
   "dependencies": {
     "node-sense-hat": "0.0.2"
   }
